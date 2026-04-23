@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CENSORED: Observer's Perjury</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- Retro terminal fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-world">
+        <!-- Top Status Bar -->
+        <div id="status-bar">
+            <div id="system-status">
+                <span class="status-label">SYSTEM STATUS:</span>
+                <span class="status-value" id="system-status-text">ACTIVE</span>
+            </div>
+            <div id="suspicion-meter">
+                <span class="status-label">AI SUSPICION:</span>
+                <div class="meter-container">
+                    <div class="meter-fill" id="suspicion-fill"></div>
+                    <span class="meter-value" id="suspicion-value">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Feeds Container -->
+        <div id="feeds-container">
+            <!-- Feed A: Hallway -->
+            <div class="camera-feed" id="feed-a" data-feed="A">
+                <div class="feed-header">
+                    <span class="feed-label">FEED A: HALLWAY - SECTOR 7</span>
+                    <span class="feed-timestamp" id="timestamp-a">23:45:00</span>
+                </div>
+                <div class="feed-display">
+                    <canvas id="canvas-a" width="320" height="240"></canvas>
+                    <div class="censorship-layer" id="censor-layer-a"></div>
+                    <div class="scanlines"></div>
+                </div>
+            </div>
+
+            <!-- Feed B: Apartment -->
+            <div class="camera-feed" id="feed-b" data-feed="B">
+                <div class="feed-header">
+                    <span class="feed-label">FEED B: ROOM 307</span>
+                    <span class="feed-timestamp" id="timestamp-b">23:45:00</span>
+                </div>
+                <div class="feed-display">
+                    <canvas id="canvas-b" width="320" height="240"></canvas>
+                    <div class="censorship-layer" id="censor-layer-b"></div>
+                    <div class="scanlines"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Log -->
+        <div id="system-log">
+            <div class="log-header">SYSTEM LOG:</div>
+            <div class="log-content" id="log-content">
+                <div class="log-entry">&gt; 23:45:00 - Shift initiated</div>
+                <div class="log-entry">&gt; 23:45:01 - Feed A active</div>
+                <div class="log-entry">&gt; 23:45:01 - Feed B active</div>
+                <div class="log-entry">&gt; 23:45:02 - Monitoring commenced</div>
+            </div>
+        </div>
+
+        <!-- Communication Panel -->
+        <div id="communication-panel" class="hidden">
+            <div class="panel-header">CIVILIAN COMMUNICATION REQUEST</div>
+            <div class="panel-content">
+                <div class="message-prompt" id="message-prompt">
+                    Civilian requesting assistance. Select response:
+                </div>
+                <div class="message-options" id="message-options">
+                    <label class="message-option">
+                        <input type="radio" name="message" value="0">
+                        <span class="option-text">"Weather looks clear today"</span>
+                    </label>
+                    <label class="message-option">
+                        <input type="radio" name="message" value="1">
+                        <span class="option-text">"Maintenance scheduled for sector 3"</span>
+                    </label>
+                    <label class="message-option">
+                        <input type="radio" name="message" value="2">
+                        <span class="option-text">"All systems normal, remain in designated areas"</span>
+                    </label>
+                    <label class="message-option">
+                        <input type="radio" name="message" value="3">
+                        <span class="option-text">"There's something in the hallway!"</span>
+                    </label>
+                </div>
+                <button id="send-message-btn" class="send-button" disabled>SEND MESSAGE</button>
+            </div>
+        </div>
+
+        <!-- End Screen Overlay -->
+        <div id="end-screen" class="hidden">
+            <div class="end-content">
+                <div class="end-title" id="end-title">SHIFT COMPLETE</div>
+                <div class="end-message" id="end-message"></div>
+                <div class="end-stats" id="end-stats"></div>
+                <button id="restart-btn" class="restart-button">START NEW SHIFT</button>
+            </div>
+        </div>
+
+        <!-- Glitch Overlay -->
+        <div id="glitch-overlay"></div>
+    </div>
+
+    <script type="module" src="./game.js"></script>
+</body>
+</html>
