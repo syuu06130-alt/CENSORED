@@ -1,0 +1,8 @@
+{
+"shiftDuration": 180,
+  "aiSensitivity": "standard",
+  "censorshipIntensity": "standard",
+  "audioCues": "distorted",
+  "colorScheme": "green",
+  "glitchIntensity": 60
+}
